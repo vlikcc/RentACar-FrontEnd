@@ -1,0 +1,4 @@
+​<picture *ngFor= "let image of images">
+    <source srcset={{image.imagePath}} type="image/svg+xml">
+    <img src={{image.imagePath[0]}} class="img-fluid img-thumbnail" alt="...">
+  </picture>

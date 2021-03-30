@@ -3,14 +3,30 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrandComponent } from './components/brand/brand.component';
+import { UserComponent } from './components/user/user.component';
+import { CustomerComponent } from './components/customer/customer.component';
+import { RentalComponent } from './components/rental/rental.component';
+import { CarDetailComponent } from './components/cardetail/cardetail.component';
+import { ImageComponent } from './components/image/image.component';
+import { NaviComponent } from './components/navi/navi.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    BrandComponent,
+    UserComponent,
+    CustomerComponent,
+    RentalComponent,
+    CarDetailComponent,
+    ImageComponent,
+    NaviComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
