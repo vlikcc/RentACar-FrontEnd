@@ -1,9 +1,21 @@
-
-    <div class="card" style="width: 18rem;" >
-        <img src="" class="card-img-top" alt="...">
+<!-- 
+    <div *ngFor ="let car of cardetails"> 
+    <div class="card" style="width: 18rem;"  >
+        <img src="https://localhost:44338/{{car.imagePath[0]}}" class="card-img-top" alt="...">
         <div class="card-body">
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text" ><label for="">Araç Adı:&nbsp;</label>{{car.carName}}</p>
+          <p class="card-text" ><label for="">Model Yılı:&nbsp;</label>{{car.modelYear}}</p>
         </div>
       </div>
-
-
+    </div> -->
+    
+    <div *ngFor ="let car of cardetails">
+    <div class="card" style="width: 18rem; background-color: darkgray;" >
+      <img src="https://localhost:44338/{{car.imagePath[0]}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{car.carName}}</h5>
+        <p class="card-text">{{car.description}}</p>
+        <a href="#" class="btn btn-primary" style="background-color: darkred; border-color: goldenrod;" >Araç Detayı</a>
+      </div>
+    </div>
+  </div>

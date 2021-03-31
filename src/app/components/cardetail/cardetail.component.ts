@@ -9,10 +9,16 @@ import { CardetailService } from 'src/app/services/cardetail.service';
 })
 export class CarDetailComponent implements OnInit {
   cardetails:CarDetail[]=[]
+  carId: number[]=[];
+ 
   constructor(private carService:CardetailService) { }
 
   ngOnInit(): void {
-    this.getCarDetails();
+     this.getCarId();
+    this.carId.forEach(element => {
+      this.getCarDetailsByCarId(element);      
+    });
+    
 
   }
 
@@ -20,7 +26,27 @@ export class CarDetailComponent implements OnInit {
   {
     this.carService.getCarDetails().subscribe(response=>{
       this.cardetails=response.data;
+      
+    });
+  }
+
+  getCarDetailsByCarId(carId:number)
+  {
+    this.carService.getCarDetailsByCarId(carId).subscribe(response=>{
+      this.cardetails=response.data;
+      
     })
   }
+
+  getCarId()
+  {
+    this.getCarDetails();
+    this.cardetails.forEach(element => {
+      this.carId.push(element.carId);      
+    });
+    
+  }
+
+  
 
 }
