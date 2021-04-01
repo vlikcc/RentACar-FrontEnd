@@ -1,0 +1,14 @@
+<div class="mb-3">
+  <label for="filterText" class="form-label">Car Search</label>
+  <input type="email"  [(ngModel)]= "filterText" class="form-control" id="filterText" placeholder="Enter Search Term">
+</div>
+<div *ngFor ="let car of cardetails | carFilter:filterText">
+    <div class="card" style="width: 18rem; background-color: darkgray;" >
+      <img src="https://localhost:44338/{{car.imagePath[0]}}" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{car.carName}}</h5>
+        <p class="card-text">{{car.description}}</p>
+        <a href="#" class="btn btn-primary" style="background-color: darkred; border-color: goldenrod;" >Araç Detayı</a>
+      </div>
+    </div>
+  </div>

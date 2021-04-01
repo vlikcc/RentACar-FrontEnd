@@ -4,29 +4,29 @@ import { CarDetail } from 'src/app/models/cardetail';
 import { CardetailService } from 'src/app/services/cardetail.service';
 
 @Component({
-  selector: 'app-car-detail',
-  templateUrl: './cardetail.component.html',
-  styleUrls: ['./cardetail.component.css'],
+  selector: 'app-car',
+  templateUrl: './car.component.html',
+  styleUrls: ['./car.component.css']
 })
-export class CarDetailComponent implements OnInit {
+export class CarComponent implements OnInit {
   cardetails: CarDetail[] = [];
-  carId: number[] = [];
-  brandId: number[] = [];
-
-  constructor(private carService: CardetailService,private activatedRoute:ActivatedRoute) {}
+  carsId: number[] = [];
+  brandsId: number[] = [];
+  filterText:string;
+  constructor(private carService: CardetailService, private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
+    
     this.activatedRoute.params.subscribe(params=>{
-      if (params["carId"]) {
-        this.getCarDetailsByCarId(params["carId"])        
+      if (params["brandId"]) {
+        console.log(this.activatedRoute);
+        this.getCarDetailsByBrandId(params["brandId"]);        
       }
       else{
-        return console.log("sayfa bulunamadı");
+        this.getCarDetails();
       }
     })
-    
   }
-
   getCarDetails() {
     this.carService.getCarDetails().subscribe((response) => {
       this.cardetails = response.data;
@@ -40,22 +40,25 @@ export class CarDetailComponent implements OnInit {
   }
 
   getCarDetailsByBrandId(brandId: number) {
-    this.carService.getCarDetailsByCarId(brandId).subscribe((response) => {
+    
+    this.carService.getCarDetailsByBrandId(brandId).subscribe((response) => {
       this.cardetails = response.data;
+      console.log(response.data);
     });
   }
 
   getCarId() {
     this.getCarDetails();
     this.cardetails.forEach((element) => {
-      this.carId.push(element.carId);
+      this.carsId.push(element.carId);
     });
   }
 
   getBrandId() {
     this.getCarDetails();
     this.cardetails.forEach((element) => {
-      this.brandId.push(element.brandId);
+      this.brandsId.push(element.brandId);
     });
   }
+
 }
