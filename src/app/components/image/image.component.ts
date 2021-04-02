@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CarImage } from 'src/app/models/image';
 import { ImageService } from 'src/app/services/image.service';
 
@@ -11,10 +12,19 @@ export class ImageComponent implements OnInit {
   images:CarImage[]=[];
   
   
-  constructor(private imageService:ImageService) { }
+  constructor(private imageService:ImageService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.getImages();
+    console.log("imageservice");
+  this.activatedRoute.params.subscribe(params=>{
+    if (params["carId"]) {
+      this.getImagesByCarId(params["carId"])      
+    }
+    else{
+      console.log(params);
+    }
+  })
+   
     
     
   }

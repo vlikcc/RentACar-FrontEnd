@@ -1,7 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import * as EventEmitter from 'node:events';
+import { element } from 'protractor';
 import { CarDetail } from 'src/app/models/cardetail';
+import { CarImage } from 'src/app/models/image';
 import { CardetailService } from 'src/app/services/cardetail.service';
+import { ImageService } from 'src/app/services/image.service';
 
 @Component({
   selector: 'app-car-detail',
@@ -12,13 +16,18 @@ export class CarDetailComponent implements OnInit {
   cardetails: CarDetail[] = [];
   carId: number[] = [];
   brandId: number[] = [];
-
-  constructor(private carService: CardetailService,private activatedRoute:ActivatedRoute) {}
-
-  ngOnInit(): void {
+  carImages:CarImage[]=[];
+  imagePath:string[]=[];
+  
+  constructor(private carService: CardetailService,private activatedRoute:ActivatedRoute, private carImageService:ImageService) {}
+ 
+  ngOnInit(): void {    
+    console.log("ngoninit");
     this.activatedRoute.params.subscribe(params=>{
       if (params["carId"]) {
-        this.getCarDetailsByCarId(params["carId"])        
+        console.log("if")
+        this.getImagesByCarId(params["carId"]); 
+        console.log(params);
       }
       else{
         return console.log("sayfa bulunamadı");
@@ -34,8 +43,10 @@ export class CarDetailComponent implements OnInit {
   }
 
   getCarDetailsByCarId(carId: number) {
+    console.log("methot")
     this.carService.getCarDetailsByCarId(carId).subscribe((response) => {
       this.cardetails = response.data;
+      console.log(response.data);
     });
   }
 
@@ -58,4 +69,23 @@ export class CarDetailComponent implements OnInit {
       this.brandId.push(element.brandId);
     });
   }
+
+  getImagesByCarId(carId:number)
+  {
+    this.activatedRoute.params.subscribe(params=>{
+      if (params["carId"]) {
+        this.carImageService.getImagesByCarId(carId).subscribe(response=>{
+          this.carImages=response.data;
+          console.log(response.data);
+          
+        })
+        
+      }
+      else{
+        console.log("hata")
+      }
+    })
+    
+  }
+  
 }
