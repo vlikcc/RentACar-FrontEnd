@@ -1,3 +1,15 @@
-<ul class="list-group">
-    <li *ngFor= "let brand of brands" (click) ="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}"  [ngClass]="getCurrentBrand(brand)" class="list-group-item shadow-sm p-4 mb-8 bg-body rounded " ><h6>{{brand.brandName}}</h6></li>   
-  </ul>
+
+
+ 
+    <a class="btn btn-lg btn-outline-secondary" data-bs-toggle="collapse" href="#markalar" role="button" aria-expanded="false" aria-controls="markalar">
+       <b style="color: chocolate;">MARKALAR</b>
+    </a>   
+
+  <div class="collapse" id="markalar">
+    <div class="card card-body body">
+      
+        <button  *ngFor= "let brand of brands" type="button" (click) ="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}"  [ngClass]="getCurrentBrand(brand)" class="btn btn-outline-secondary " role="button"><h6>{{brand.brandName}}</h6></button>
+     
+    </div>
+  </div>
+  
