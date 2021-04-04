@@ -17,4 +17,8 @@ export class BrandService {
     return this.httpClient.get<ListResponseModel<Brand>>(this.apiUrl+"brands/getall")
   }
 
+  addBrand(brand:Brand){
+    return this.httpClient.post(this.apiUrl+"brands/add",brand)
+  }
+
 }

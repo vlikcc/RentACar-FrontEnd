@@ -13,7 +13,7 @@ import { NaviComponent } from './components/navi/navi.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CarComponent } from './components/car/car.component';
 import { CarFilterPipe } from './pipes/car-filter.pipe';
-import {FormsModule} from '@angular/forms';
+import {FormBuilder, FormsModule,FormGroup,FormControl, Validators, ReactiveFormsModule} from '@angular/forms';
 import { BrandAddComponent } from './components/brand-add/brand-add.component';
 import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
@@ -41,7 +41,11 @@ import { UserAddComponent } from './components/user-add/user-add.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,   
+    ReactiveFormsModule
+    
+  
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
