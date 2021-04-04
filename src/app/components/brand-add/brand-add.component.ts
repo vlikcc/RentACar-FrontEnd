@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 import { BrandService } from 'src/app/services/brand.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandAddComponent implements OnInit {
   brandAddForm:FormGroup
-  constructor(private formBuilder:FormBuilder,private brandService:BrandService) { }
+  constructor(private formBuilder:FormBuilder,private brandService:BrandService,private toastrService:ToastrService) { }
 
   ngOnInit(): void {
     this.createBrandAddForm();
@@ -29,7 +30,8 @@ export class BrandAddComponent implements OnInit {
       this.brandService.addBrand(brandModel).subscribe(data=>{
         console.log(data);
       })
-    console.log(brandModel);      
+      this.toastrService.success("MARKA EKLENDİ",brandModel.brandName)
+         
     }
     else{
       console.log("formunuz eksik")
