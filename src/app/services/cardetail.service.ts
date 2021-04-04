@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { CarDetail } from '../models/cardetail';
+import { Car } from '../models/car';
 
 @Injectable({
   providedIn: 'root',
@@ -40,4 +41,39 @@ export class CardetailService {
       this.apiUrl + 'cars/getcardetailsbycolorid?colorId=' + colorId
     );
   }
+
+  
+
+  getCars():Observable<ListResponseModel<Car>>
+  {
+    return this.httpClient.get<ListResponseModel<Car>>(this.apiUrl+"cars/getall")
+  }
+
+  addCar(car:Car)
+  {
+    return this.httpClient.post(this.apiUrl+"cars/add",car);
+  }
+   deleteCar(car:Car)
+   {
+     return this.httpClient.post(this.apiUrl+"cars/delete",car);
+   }
+
+   updateCar(car:Car)
+   {
+     return this.httpClient.post(this.apiUrl+"cars/update",car);
+   }
+    getCarByBrandId(brandId:number)
+    {
+      return this.httpClient.get(this.apiUrl+"cars/getbybrandId?Id="+brandId);
+    }
+
+    getCarById(carId:number)
+    {
+      return this.httpClient.get(this.apiUrl+"cars/getbyid?id="+carId);
+    }
+
+    getCarByColorId(colorId:number)
+    {
+      return this.httpClient.get(this.apiUrl+"cars/getbycolorid?colorid="+colorId);
+    }
 }

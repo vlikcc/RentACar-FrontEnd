@@ -1,1 +1,42 @@
-<p>car-add works!</p>
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">ARAÇ EKLE</h5></div>
+            <div class="card-body">
+
+                <form [formGroup]="carAddForm">
+                    <label for="brandId">MARKA KODU</label>
+                    <div class="form-group">
+                        <input type="number" id="brandId" formControlName="brandId" class="form-control"/>
+                    </div>
+                    <label for="carName">ARAÇ ADI</label>
+                    <div class="form-group">
+                        <input type="text" id="carName" formControlName="carName" class="form-control"/>
+                    </div>
+                    <label for="colorId">RENK KODU</label>
+                    <div class="form-group">
+                        <input type="number" id="colorId" formControlName="colorId" class="form-control"/>
+                    </div>
+                    <label for="modelYear">MODEL YILI</label>
+                    <div class="form-group">
+                        <input type="number" id="modelYear" formControlName="modelYear" class="form-control"/>
+                    </div>
+                    <label for="dailyPrice">GÜNLÜK KİRALAMA ÜCRETİ</label>
+                    <div class="form-group">
+                        <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control"/>
+                    </div>
+                    <label for="description">AÇIKLAMALAR</label>
+                    <div class="form-group">
+                        <input type="text" id="description" formControlName="description" class="form-control"/>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" class="btn btn-secondary" (click)="addCar()">KAYDET</button>
+            </div>
+            
+            
+
+        </div>
+    </div>
+</div>
