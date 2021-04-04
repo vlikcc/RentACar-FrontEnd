@@ -9,6 +9,7 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
   brands:Brand[]=[]
+  brand2:Brand[]=[{id:0,brandName:null}]
   constructor(private brandService:BrandService) { }
   currentBrand:Brand;
 
@@ -38,4 +39,9 @@ export class BrandComponent implements OnInit {
     }
   }
 
+  setAllBrand(brand2:Brand)
+  {
+    brand2.brandName=null;
+    this.currentBrand=brand2;
+  }
 }

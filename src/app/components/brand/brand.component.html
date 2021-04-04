@@ -1,15 +1,12 @@
-
-
- 
-    <a class="btn btn-lg btn-outline-secondary" data-bs-toggle="collapse" href="#markalar" role="button" aria-expanded="false" aria-controls="markalar">
-       <b style="color: chocolate;">MARKALAR</b>
-    </a>   
+    <button _ngcontent-duv-c53="" type="submit" class="btn btn-outline-success" data-bs-toggle="collapse" href="#markalar" role="button" aria-expanded="false" aria-controls="markalar">
+       <b>MARKALAR</b>
+    </button>   
 
   <div class="collapse" id="markalar">
     <div class="card card-body body">
-      
-        <button  *ngFor= "let brand of brands" type="button" (click) ="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}"  [ngClass]="getCurrentBrand(brand)" class="btn btn-outline-secondary " role="button"><h6>{{brand.brandName}}</h6></button>
-     
+      <button  *ngFor="let brand of brand2" routerLink=""  class="btn btn-outline-success"  type="submit" (click)="setCurrentBrand(brand)" [ngClass]="getCurrentBrand(brand)"><h6>TÜM MARKALAR</h6></button>
+        <button  *ngFor= "let brand of brands" type="submit" (click) ="setCurrentBrand(brand)" routerLink="/cars/brand/{{brand.id}}"  [ngClass]="getCurrentBrand(brand)" class="btn btn-outline-success" role="button"><h6>{{brand.brandName}}</h6></button>
+       
     </div>
   </div>
   
