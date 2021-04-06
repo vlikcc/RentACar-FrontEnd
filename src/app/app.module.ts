@@ -19,7 +19,8 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 import { CarAddComponent } from './components/car-add/car-add.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { ToastrModule } from 'ngx-toastr';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { ColorComponent } from './components/color/color.component'
 
 
 
@@ -38,7 +39,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
     BrandAddComponent,
     ColorAddComponent,
     CarAddComponent,
-    UserAddComponent
+    UserAddComponent,
+    ColorComponent
   ],
   imports: [
     BrowserModule,

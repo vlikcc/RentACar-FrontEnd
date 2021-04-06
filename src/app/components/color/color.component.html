@@ -1,0 +1,13 @@
+<div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button  *ngFor = "let color of color2" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" >
+       {{color.colorName}}
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="card card-body body">
+        
+      <button  *ngFor= "let color of colors" type="submit" (click) ="setCurrentColor(color)" routerLink="/cars/color/{{color.id}}"  [ngClass]="getCurrentColor(color)" class=" btn btn-sm btn-outline-success " role="button"><strong>{{color.colorName}}</strong></button>
+      </div>
+    </div>
+  </div>

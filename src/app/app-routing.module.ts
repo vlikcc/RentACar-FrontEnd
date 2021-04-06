@@ -12,6 +12,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 const routes: Routes = [
   {path:"" , component:CarComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
+  {path:"cars/color/:colorId",component:CarComponent},
   {path:"cardetails/car/:carId",component:CarDetailComponent},
   {path:"brands/add",component:BrandAddComponent},
   {path:"colors/add",component:ColorAddComponent},
