@@ -1,13 +1,14 @@
 <div class="mb-3">
   <label for="filterText" class="form-label">Car Search</label>
-  <input type="email"  [(ngModel)]= "filterText" class="form-control" id="filterText" placeholder="Enter Search Term">
+  <input type="text"  [(ngModel)]= "filterText" class="form-control" id="filterText" placeholder="Enter Search Term">
 </div>
 <div *ngFor ="let car of cardetails | carFilter:filterText">
     <div class="card" style="width: 18rem; background-color: darkgray;" >
       <img src="https://localhost:44338/{{car.imagePath[0]}}" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">{{car.carName}}</h5>
-        <p class="card-text">{{car.description}}</p>
+        <h5 class="card-title"><label for="">Araç Adı:</label>&nbsp;{{car.carName}}</h5>
+        <p class="card-text"><label for="">Açıklama:</label>&nbsp;{{car.description}}</p>
+        <p class ="card-text"><label for="">Araç Rengi:</label>&nbsp;{{car.colorName}}</p>
         <a  class="btn btn-primary" style="background-color: darkred; border-color: goldenrod;"  routerLink="/cardetails/car/{{car.carId}}"   >Araç Detayı</a>
       </div>
     </div>

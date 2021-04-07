@@ -18,11 +18,13 @@ export class CarComponent implements OnInit {
   ngOnInit(): void {
     
     this.activatedRoute.params.subscribe(params=>{
-      if (params["brandId"]) {
-        console.log(this.activatedRoute);
+      if (params["brandId"]) {       
         this.getCarDetailsByBrandId(params["brandId"]);        
       }
-      else{
+      else if (params["colorId"]) {
+        this.getCarDetailsByColorId(params["colorId"]);
+        
+      } else {
         this.getCarDetails();
       }
     })
@@ -45,6 +47,13 @@ export class CarComponent implements OnInit {
       this.cardetails = response.data;
       console.log(response.data);
     });
+  }
+
+  getCarDetailsByColorId(colorId:number)
+  {
+    this.carService.getCarDetailsByColorId(colorId).subscribe((response)=>{
+      this.cardetails=response.data;
+    })
   }
 
   getCarId() {

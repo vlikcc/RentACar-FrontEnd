@@ -9,7 +9,8 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandComponent implements OnInit {
   brands:Brand[]=[]
-  brand2:Brand[]=[{id:0,brandName:null}]
+  headerBrand:Brand={id:0, brandName:'TÜM MARKALAR'};
+  brand2:Brand[]=[{id:0, brandName:'TÜM MARKALAR'}]
   constructor(private brandService:BrandService) { }
   currentBrand:Brand;
 
@@ -27,12 +28,13 @@ export class BrandComponent implements OnInit {
   setCurrentBrand(brand:Brand)
   {
     this.currentBrand=brand;
+    this.headerBrand=brand;
   }
 
   getCurrentBrand(brand:Brand)
   {
     if (brand==this.currentBrand) {
-       return "list-group-item list-group-item-info"
+       return "accordion-header"
     }
     else{
       return "list-group-item"
@@ -41,7 +43,7 @@ export class BrandComponent implements OnInit {
 
   setAllBrand(brand2:Brand)
   {
-    brand2.brandName=null;
+    
     this.currentBrand=brand2;
   }
 }
