@@ -20,7 +20,14 @@ import { CarAddComponent } from './components/car-add/car-add.component';
 import { UserAddComponent } from './components/user-add/user-add.component';
 import { ToastrModule } from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { ColorComponent } from './components/color/color.component'
+import { ColorComponent } from './components/color/color.component';
+import { CarColorPipe } from './pipes/car-color.pipe';
+import { CarUpdateComponent } from './components/car-update/car-update.component';
+import { ColorUpdateComponent } from './components/color-update/color-update.component';
+import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
+import { ImageUpdateComponent } from './components/image-update/image-update.component';
+import { RentalUpdateComponent } from './components/rental-update/rental-update.component';
+import { UserUpdateComponent } from './components/user-update/user-update.component'
 
 
 
@@ -40,7 +47,14 @@ import { ColorComponent } from './components/color/color.component'
     ColorAddComponent,
     CarAddComponent,
     UserAddComponent,
-    ColorComponent
+    ColorComponent,
+    CarColorPipe,
+    CarUpdateComponent,
+    ColorUpdateComponent,
+    BrandUpdateComponent,
+    ImageUpdateComponent,
+    RentalUpdateComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,

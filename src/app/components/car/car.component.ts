@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CarDetail } from 'src/app/models/cardetail';
+import { CarColorPipe } from 'src/app/pipes/car-color.pipe';
 import { CardetailService } from 'src/app/services/cardetail.service';
 
 @Component({
@@ -19,11 +20,13 @@ export class CarComponent implements OnInit {
     
     this.activatedRoute.params.subscribe(params=>{
       if (params["brandId"]) {       
-        this.getCarDetailsByBrandId(params["brandId"]);        
+        this.getCarDetailsByBrandId(params["brandId"]); 
+          
       }
       else if (params["colorId"]) {
         this.getCarDetailsByColorId(params["colorId"]);
         
+      
       } else {
         this.getCarDetails();
       }
@@ -45,12 +48,13 @@ export class CarComponent implements OnInit {
     
     this.carService.getCarDetailsByBrandId(brandId).subscribe((response) => {
       this.cardetails = response.data;
-      console.log(response.data);
+     
     });
   }
 
   getCarDetailsByColorId(colorId:number)
   {
+
     this.carService.getCarDetailsByColorId(colorId).subscribe((response)=>{
       this.cardetails=response.data;
     })
@@ -68,6 +72,10 @@ export class CarComponent implements OnInit {
     this.cardetails.forEach((element) => {
       this.brandsId.push(element.brandId);
     });
+  }
+  colorFilter()
+  {
+    
   }
 
 }

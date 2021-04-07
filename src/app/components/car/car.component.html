@@ -2,7 +2,7 @@
   <label for="filterText" class="form-label">Car Search</label>
   <input type="text"  [(ngModel)]= "filterText" class="form-control" id="filterText" placeholder="Enter Search Term">
 </div>
-<div *ngFor ="let car of cardetails | carFilter:filterText">
+<div *ngFor ="let car of cardetails | carFilter:filterText |carColor:filterText" >
     <div class="card" style="width: 18rem; background-color: darkgray;" >
       <img src="https://localhost:44338/{{car.imagePath[0]}}" class="card-img-top" alt="...">
       <div class="card-body">
