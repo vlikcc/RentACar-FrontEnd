@@ -18,7 +18,7 @@ import { ColorService } from 'src/app/services/color.service';
 export class CarUpdateComponent implements OnInit {
 
   carUpdateForm:FormGroup;
-  car:CarDetail[]=[];
+  cars:CarDetail[]=[];
   brands:Brand[];
   colors:Color[]
   constructor(private formBuilder:FormBuilder,
@@ -33,10 +33,7 @@ export class CarUpdateComponent implements OnInit {
     this.getBrands();
     this.getColors();
     this.activatedRoute.params.subscribe(params=>{
-      if (params["carId"]) {
-        this.carService.getCarDetailsByCarId(params["carId"]);
-        
-      }
+     
     })
   }
 
@@ -49,15 +46,17 @@ export class CarUpdateComponent implements OnInit {
       modelYear:["",Validators.required],
       dailyPrice:["",Validators.required],
       description:["",Validators.required]
+      
 
     })
+    console.log("deneme")
   }
 
   updateCar()
   {  
     if (this.carUpdateForm.valid) {
       let carModel=Object.assign({},this.carUpdateForm.value)
-      carModel.carId=this.car[0].carId;
+      carModel.carId=this.cars[0].carId;
       this.carService.updateCar(carModel).subscribe(response=>{
         this.toastrService.success("ARAÇ GÜNCELLENDİ",carModel.carName)
       },responseError=>{
@@ -86,14 +85,14 @@ export class CarUpdateComponent implements OnInit {
 
   getCarDetailsByCarId(carId:number) {
     this.carService.getCarDetailsByCarId(carId).subscribe((response) => {
-      this.car = response.data;
+      this.cars = response.data;
       this.carUpdateForm.setValue({
-        colorId: this.car[0].colorId,
-        brandId: this.car[0].brandId,
-        name: this.car[0].carName,
-        modelYear: this.car[0].modelYear,
-        dailyPrice: this.car[0].dailyPrice,
-        description: this.car[0].description
+        colorId: this.cars[0].colorId,
+        brandId: this.cars[0].brandId,
+        name: this.cars[0].carName,
+        modelYear: this.cars[0].modelYear,
+        dailyPrice: this.cars[0].dailyPrice,
+        description: this.cars[0].description
       })
     });
   }

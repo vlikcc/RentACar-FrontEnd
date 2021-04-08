@@ -27,7 +27,8 @@ import { ColorUpdateComponent } from './components/color-update/color-update.com
 import { BrandUpdateComponent } from './components/brand-update/brand-update.component';
 import { ImageUpdateComponent } from './components/image-update/image-update.component';
 import { RentalUpdateComponent } from './components/rental-update/rental-update.component';
-import { UserUpdateComponent } from './components/user-update/user-update.component'
+import { UserUpdateComponent } from './components/user-update/user-update.component';
+import { CarEditComponent } from './components/car-edit/car-edit.component'
 
 
 
@@ -54,7 +55,8 @@ import { UserUpdateComponent } from './components/user-update/user-update.compon
     BrandUpdateComponent,
     ImageUpdateComponent,
     RentalUpdateComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    CarEditComponent
   ],
   imports: [
     BrowserModule,
