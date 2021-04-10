@@ -9,7 +9,7 @@
             <p class="card-text"><label for="">Günlük Ücret</label>{{car.dailyPrice}}</p>
             <p class="card-text"><label for="">Açıklama</label>{{car.description}}</p>
             <button class="btn btn-sm"  [ngClass]= "getCurrentCar(car)" (click)="setCurrentCar(car)" routerLink="cars/update/{{car.id}}">GÜNCELLE</button>
-            <button class="btn btn-sm" routerLink="cars/delete">SİL</button>
+            <button class="btn btn-sm" [ngClass]= "getCurrentCar(car)" (click)="setCurrentCar(car)" routerLink="cars/delete/{{car.id}}">SİL</button>
         </div>
     </div>
        

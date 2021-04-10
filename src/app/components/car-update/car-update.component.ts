@@ -78,6 +78,8 @@ export class CarUpdateComponent implements OnInit {
 
   }
 
+
+
   getBrands() {
     this.brandService.getBrands().subscribe(response => {
       this.brands = response.data

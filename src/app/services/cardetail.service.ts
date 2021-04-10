@@ -53,9 +53,9 @@ export class CardetailService {
   {
     return this.httpClient.post(this.apiUrl+"cars/add",car);
   }
-   deleteCar(car:Car)
+   deleteCarByCarId(carId:number)
    {
-     return this.httpClient.post(this.apiUrl+"cars/delete",car);
+     return this.httpClient.post(this.apiUrl+"cars/deletecarbycarid?id=",carId);
    }
 
    updateCar(car:Car)

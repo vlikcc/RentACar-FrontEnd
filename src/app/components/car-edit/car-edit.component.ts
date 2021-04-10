@@ -65,8 +65,18 @@ export class CarEditComponent implements OnInit {
   setCurrentCar(car2:Car)
   {
     this.currentCar==car2;
+    this.deleteCar();
    
   }
+
+  deleteCar()
+{
+  this.carService.deleteCarByCarId(this.currentCar.id).subscribe(response=>{
+    this.toastrService.success("ARAÇ SİLİNDİ","BAŞARILI");
+  })
+  
+  
+}
 }
 
 
