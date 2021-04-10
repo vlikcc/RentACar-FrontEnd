@@ -1,13 +1,14 @@
-<div *ngfor="let car of cars">
+<div *ngFor="let car of cars">
     <div class="card" style="width: 18rem; background-color: darkgray;" >
         <div class="card-body">
             <p class="card-text"><label for="">Araç Kodu</label>{{car.id}}</p>
             <p class="card-text"><label for="">Marka Kodu</label>{{car.brandId}}</p>
-            <p class="card-text"><label for="">Araç Adı</label>{{car.carName}}</p>
+            <p class="card-text" ><label for="">Araç Adı</label>{{car.carName}}</p>
             <p class="card-text"><label for="">Renk Kodu</label>{{car.colorId}}</p>
             <p class="card-text"><label for="">Model Yılı</label>{{car.modelYear}}</p>
+            <p class="card-text"><label for="">Günlük Ücret</label>{{car.dailyPrice}}</p>
             <p class="card-text"><label for="">Açıklama</label>{{car.description}}</p>
-            <button class="btn btn-sm" routerLink="cars/update">GÜNCELLE</button>
+            <button class="btn btn-sm"  [ngClass]= "getCurrentCar(car)" (click)="setCurrentCar(car)" routerLink="cars/update/{{car.id}}">GÜNCELLE</button>
             <button class="btn btn-sm" routerLink="cars/delete">SİL</button>
         </div>
     </div>

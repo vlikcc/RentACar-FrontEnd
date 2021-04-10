@@ -5,7 +5,13 @@
             <div class="card-body">
 
                 <form [formGroup]="carUpdateForm">
-                    <label for="brandId">MARKA KODU</label>
+                    <label for="carId">ARAÇ KODU</label>
+                    <div class="form-group">
+                        <select id="id" class="form-select"  formControlName="id">
+                            <option  >{{ carId2 }}</option>
+                          </select>
+                    </div>
+                    <label for="carId">MARKA ADI</label>
                     <div class="form-group">
                         <select id="brandId" class="form-select"  formControlName="brandId">
                             <option [ngValue]="brand.id" *ngFor="let brand of brands">{{ brand.brandName }}</option>

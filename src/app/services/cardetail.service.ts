@@ -67,9 +67,9 @@ export class CardetailService {
       return this.httpClient.get(this.apiUrl+"cars/getbybrandId?Id="+brandId);
     }
 
-    getCarById(carId:number)
+    getCarById(carId:number):Observable<ListResponseModel<Car>>
     {
-      return this.httpClient.get(this.apiUrl+"cars/getbyid?id="+carId);
+      return this.httpClient.get<ListResponseModel<Car>>(this.apiUrl+"cars/getbyid?id="+carId);
     }
 
     getCarByColorId(colorId:number)

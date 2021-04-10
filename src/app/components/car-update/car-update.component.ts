@@ -1,3 +1,4 @@
+import { ThisReceiver } from '@angular/compiler';
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -18,9 +19,10 @@ import { ColorService } from 'src/app/services/color.service';
 export class CarUpdateComponent implements OnInit {
 
   carUpdateForm:FormGroup;
-  cars:CarDetail[]=[];
+  car:Car[];
   brands:Brand[];
   colors:Color[]
+  carId2:number;
   constructor(private formBuilder:FormBuilder,
     private carService:CardetailService,
     private brandService:BrandService,
@@ -29,10 +31,18 @@ export class CarUpdateComponent implements OnInit {
     private toastrService:ToastrService) { }
 
   ngOnInit(): void {
-    this.createCarUpdateForm();
     this.getBrands();
-    this.getColors();
+    this.getColors();        
+    this.createCarUpdateForm();
+    
+   
     this.activatedRoute.params.subscribe(params=>{
+      if (params["carId"]) {
+        this.carId2=params["carId"];        
+        this.getCarById(this.carId2)   
+        
+        
+      }
      
     })
   }
@@ -40,31 +50,42 @@ export class CarUpdateComponent implements OnInit {
   createCarUpdateForm()
   {
     this.carUpdateForm=this.formBuilder.group({
+      id:[this.carId2,Validators.required],
       brandId:["",Validators.required],
       carName:["",Validators.required],
       colorId:["",Validators.required],
       modelYear:["",Validators.required],
       dailyPrice:["",Validators.required],
-      description:["",Validators.required]
-      
+      description:["",Validators.required]   
 
     })
-    console.log("deneme")
+    
+    
+   
   }
 
   updateCar()
   {  
+    
     if (this.carUpdateForm.valid) {
+      
       let carModel=Object.assign({},this.carUpdateForm.value)
-      carModel.carId=this.cars[0].carId;
-      this.carService.updateCar(carModel).subscribe(response=>{
+      this.car[0].id=carModel.id,
+      this.car[0].brandId=carModel.brandId,
+      this.car[0].carName=carModel.carName,
+      this.car[0].dailyPrice=carModel.dailyPrice,
+      this.car[0].modelYear=carModel.modelYear,
+      this.car[0].description=carModel.description         
+      this.carService.updateCar(this.car[0]).subscribe(response=>{
         this.toastrService.success("ARAÇ GÜNCELLENDİ",carModel.carName)
       },responseError=>{
         this.toastrService.success(responseError.message)
       })       
     }
     else
-    {
+    {     
+      console.log(this.carUpdateForm.value);
+     
       this.toastrService.error("Form Eksik","Hata")
     }
        
@@ -83,17 +104,21 @@ export class CarUpdateComponent implements OnInit {
     })
   }
 
-  getCarDetailsByCarId(carId:number) {
-    this.carService.getCarDetailsByCarId(carId).subscribe((response) => {
-      this.cars = response.data;
+  getCarById(carId:number) {
+   
+    this.carService.getCarById(this.carId2).subscribe((response) => {
+      this.car = response.data      
       this.carUpdateForm.setValue({
-        colorId: this.cars[0].colorId,
-        brandId: this.cars[0].brandId,
-        name: this.cars[0].carName,
-        modelYear: this.cars[0].modelYear,
-        dailyPrice: this.cars[0].dailyPrice,
-        description: this.cars[0].description
+        id:this.carId2,
+        brandId:this.car[0].brandId,
+        carName:this.car[0].carName,
+        colorId:this.car[0].colorId,
+        modelYear:this.car[0].modelYear,
+        dailyPrice:this.car[0].dailyPrice,
+        description:this.car[0].description
+       
       })
+      console.log(this.carUpdateForm.value)
     });
   }
 
