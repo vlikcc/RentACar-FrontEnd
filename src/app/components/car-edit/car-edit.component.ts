@@ -27,10 +27,12 @@ export class CarEditComponent implements OnInit {
     this.activatedRoute.params.subscribe(params=>{
       if (params[""]) {
         this.getCars(); 
+        
           
       }
       else{
         this.getCars();
+        console.log("else")
       }
     }) 
     

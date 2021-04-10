@@ -12,7 +12,7 @@ import { ColorAddComponent } from './components/color-add/color-add.component';
 
 
 const routes: Routes = [
-  {path:"",component:CarComponent},
+  {path:"",component:CarEditComponent},
   {path:"cars/edit",component:CarEditComponent},
   {path:"cars",component:CarEditComponent},
   {path:"cars/brand/:brandId",component:CarComponent},
@@ -21,7 +21,7 @@ const routes: Routes = [
   {path:"brands/add",component:BrandAddComponent},
   {path:"colors/add",component:ColorAddComponent},
   {path:"cars/add",component:CarAddComponent},
-  {path:"cars/update/:carId",component:CarUpdateComponent}
+  {path:"cars/edit/cars/update/:carId",component:CarUpdateComponent}
 ];
 
 @NgModule({
